@@ -1,0 +1,50 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:7.0
+    working_directory: /MyApi
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "MyApi/MyApi.csproj" }}
+            - v1-dependencies-
+
+      - run:
+          name: Install SonarScanner for .NET Core
+          command: |
+            dotnet tool install --global dotnet-sonarscanner
+            dotnet sonarscanner begin /k:"my-api" /d:sonar.login=${SONAR_TOKEN}
+          environment:
+            SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
+
+      - run:
+          name: Build and Test
+          command: |
+            dotnet build MyApi/MyApi.csproj --no-restore --configuration Release
+
+      - run:
+          name: Publish Artifact
+          command: |
+            dotnet publish MyApi/MyApi.csproj --no-restore --configuration Release --output ./publish
+
+      - run:
+          name: SonarQube analysis
+          command: |
+            dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "MyApi/MyApi.csproj" }}
+          paths:
+            - ~/.nuget/packages
+            - ~/.local/share/NuGet/Cache
+
+workflows:
+  version: 2.1
+
+  build-and-analyze:
+    jobs:
+      - build
