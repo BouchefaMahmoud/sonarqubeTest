@@ -35,7 +35,7 @@ jobs:
             dotnet nuget add source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json -n dotnet-core
             dotnet nuget locals all --clear
             dotnet restore
-            dotnet build sonarqubeTest/MyApi/MyApi.csproj --no-restore --configuration Release
+            dotnet build ./MyApi/MyApi.csproj --no-restore --configuration Release
       - run:
           name: SonarQube analysis
           command: |
