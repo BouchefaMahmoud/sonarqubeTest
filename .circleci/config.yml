@@ -27,7 +27,7 @@ jobs:
           name: where is the project
           command: | 
             pwd
-            ls
+            ls ./MyApi
       - run:
           name: Build
           command: |
