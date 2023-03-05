@@ -14,9 +14,8 @@ jobs:
       - checkout
       - run:
           name: Add .NET Core SDK tools to PATH
-          command: |
-            export PATH="$PATH:$HOME/.dotnet/tools"
-          shell: bash
+          command: echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
+          
       - run:
           name: Install SonarScanner for .NET Core
           command: |
