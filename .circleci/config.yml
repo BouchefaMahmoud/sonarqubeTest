@@ -7,37 +7,11 @@ version: 2.1
 jobs:
  
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
-    
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    environment:
-      image: ubuntu-2004:202202-01
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    # Be sure to update the tag on this image to a more stable version, using latest can result in unstable builds.
+  build-and-analyze:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:7.0
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: mcr.microsoft.com/dotnet/sdk:latest
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "MyApi/MyApi.csproj" }}
-            - v1-dependencies-
-      - run:
-          name: Install Docker
-          command: |
-            su root -c 'apt-get update'
-            su root -c 'apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release'
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | su root -c 'tee /etc/apt/sources.list.d/docker.list > /dev/null'
-            su root -c 'apt-get update'
-            su root -c 'apt-get install -y docker-ce docker-ce-cli containerd.io'
-
-      - run:
-          name: Log in to Docker registry
-          command: echo "moudmah123" | docker login -u "666123456789" --password-stdin
-
       - run:
           name: Install SonarScanner for .NET Core
           command: |
@@ -45,24 +19,15 @@ jobs:
             dotnet sonarscanner begin /k:"my-api" /d:sonar.login=${SONAR_TOKEN}
           environment:
             SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
-
       - run:
-          name: Build
+          name: Build and Test
           command: |
             dotnet build MyApi/MyApi.csproj --no-restore --configuration Release
-      - run:
-          name: Publish Artifact
-          command: |
-            dotnet publish MyApi/MyApi.csproj --no-restore --configuration Release --output ./publish
+            dotnet test MyApi.Tests/MyApi.Tests.csproj --no-restore --verbosity normal
       - run:
           name: SonarQube analysis
           command: |
             dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
-      - save_cache:
-          key: v1-dependencies-{{ checksum "MyApi/MyApi.csproj" }}
-          paths:
-            - ~/.nuget/packages
-            - ~/.local/share/NuGet/Cache
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -70,4 +35,4 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test
+      - build-and-analyze
