@@ -20,6 +20,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "MyApi/MyApi.csproj" }}
             - v1-dependencies-
+            
+      - run:
+          name: Log in to Docker registry
+          command: echo "moudmah123" | docker login -u "666123456789" --password-stdin
 
       - run:
           name: Install SonarScanner for .NET Core
