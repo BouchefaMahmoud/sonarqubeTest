@@ -12,6 +12,17 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:latest
     steps:
       - checkout
+      
+      - run:
+          name: Install tools
+          command: apt-get update &&  apt-get install -y unzip
+
+      - run:
+          name: Install Java JDK 17
+          command: |
+            apt install -y openjdk-17-jdk
+    
+    
       - run:
           name: Add .NET Core SDK tools to PATH
           command: echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
@@ -37,14 +48,7 @@ jobs:
             dotnet restore
             dotnet build MyApi.sln --no-restore --configuration Release
       
-      - run:
-          name: Install tools
-          command: apt-get update &&  apt-get install -y unzip
 
-      - run:
-          name: Install Java JDK 17
-          command: |
-            apt install openjdk-17-jdk
       
 
 
