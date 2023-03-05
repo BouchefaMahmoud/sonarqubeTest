@@ -39,7 +39,10 @@ jobs:
       - run:
           name: SonarQube analysis
           command: |
+            cd /root/project/MyApi/
             dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
+          environment:
+            SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
