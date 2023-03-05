@@ -36,6 +36,13 @@ jobs:
             dotnet nuget locals all --clear
             dotnet restore
             dotnet build MyApi.sln --no-restore --configuration Release
+        
+      - run:
+          name: Install Java JDK 17
+          command: |
+            curl -s "https://get.sdkman.io" | bash
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+            sdk install java 17.0.1-zulu
             
       - run:
           name: SonarQube analysis
