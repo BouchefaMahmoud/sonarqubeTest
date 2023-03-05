@@ -20,6 +20,7 @@ jobs:
           name: Install SonarScanner for .NET Core
           command: |
             dotnet tool install --global dotnet-sonarscanner
+            cd /root/project/MyApi/
             dotnet sonarscanner begin /k:"sonarqubeTest" /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url=https://sonarqube.mahmoudbouchefa.com
           environment:
             SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
