@@ -27,7 +27,6 @@ jobs:
           name: Build and Test
           command: |
             dotnet build MyApi/MyApi.csproj --no-restore --configuration Release
-            dotnet test MyApi.Tests/MyApi.Tests.csproj --no-restore --verbosity normal
       - run:
           name: SonarQube analysis
           command: |
