@@ -15,12 +15,12 @@ jobs:
       - run:
           name: Add .NET Core SDK tools to PATH
           command: echo 'export PATH="$PATH:/root/.dotnet/tools"' >> $BASH_ENV
-          
+
       - run:
           name: Install SonarScanner for .NET Core
           command: |
             dotnet tool install --global dotnet-sonarscanner
-            dotnet sonarscanner begin /k:"my-api" /d:sonar.login=${SONAR_TOKEN}
+            dotnet sonarscanner begin /k:"sonarqubeTest" /d:sonar.login=${SONAR_TOKEN} /d:sonar.host.url=https://sonarqube.mahmoudbouchefa.com
           environment:
             SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
       - run:
