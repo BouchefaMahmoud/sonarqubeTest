@@ -40,10 +40,12 @@ jobs:
       - run:
           name: Install Java JDK 17
           command: |
+            apt-get update
+            apt-get install unzip -y
             curl -s "https://get.sdkman.io" | bash
             source "$HOME/.sdkman/bin/sdkman-init.sh"
             sdk install java 17.0.1-zulu
-            
+
       - run:
           name: SonarQube analysis
           command: |
