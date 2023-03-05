@@ -28,14 +28,15 @@ jobs:
           command: | 
             pwd
             ls
-
       - run:
           name: Build
           command: |
             dotnet nuget add source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json -n dotnet-core
             dotnet nuget locals all --clear
             dotnet restore
+            ls
             dotnet build ./MyApi/MyApi.sln --no-restore --configuration Release
+            
       - run:
           name: SonarQube analysis
           command: |
