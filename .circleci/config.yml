@@ -24,17 +24,18 @@ jobs:
           environment:
             SONAR_TOKEN: sqp_d0bb4b53e655a22e93b535dd37c4ab9a2681489e
       - run:
-          name: where 
-          command: pwd
+          name: where is the project
+          command: | 
+            pwd
+            ls
 
-          
       - run:
           name: Build
           command: |
             dotnet nuget add source https://dotnet.myget.org/F/dotnet-core/api/v3/index.json -n dotnet-core
             dotnet nuget locals all --clear
             dotnet restore
-            dotnet build */MyApi.csproj --no-restore --configuration Release
+            dotnet build sonarqubeTest/MyApi/MyApi.csproj --no-restore --configuration Release
       - run:
           name: SonarQube analysis
           command: |
