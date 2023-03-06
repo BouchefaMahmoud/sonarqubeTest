@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bM3IHFfeWGWWQm48AVNX2blL2bI3i5LGRKE9HzhYVhiy5jXmtZgQ9lKT2/YZou5oDja+vyDmd5aKbtxdwiM/HA==",
+  "dgSpecHash": "KAI5lye12hHiorxRYX2iMcRgqMxEKAnOnL4pmdQP4/3uZ0Wt9YJVdANqmMTiQ9jVZAdHJba2Mp/8Ya2T/O47BQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\MyApi.csproj",
+  "projectFilePath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\MyApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mahmoud.bouchefa\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
     "C:\\Users\\mahmoud.bouchefa\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

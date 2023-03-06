@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\MyApi.csproj": {}
+    "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\MyApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\MyApi.csproj": {
+    "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\MyApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\MyApi.csproj",
+        "projectUniqueName": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\MyApi.csproj",
         "projectName": "MyApi",
-        "projectPath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\MyApi.csproj",
+        "projectPath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\MyApi.csproj",
         "packagesPath": "C:\\Users\\mahmoud.bouchefa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonar\\MyApi\\obj\\",
+        "outputPath": "C:\\Users\\mahmoud.bouchefa\\Desktop\\c# workspace\\sonarqubeTest\\MyApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
