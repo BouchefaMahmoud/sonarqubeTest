@@ -43,12 +43,14 @@ jobs:
             pwd
             ls ./MyApi
       - run:
-          name: Build
+          name: Build and test
           command: |
             cd /root/project/MyApi/
             dotnet nuget locals all --clear
             dotnet restore
             dotnet build MyApi.sln --no-restore --configuration Release
+            cd /root/project/MyApi.Tests/
+            dotnet test MyApi.Tests/MyApi.Tests.csproj --no-restore --verbosity normal
       
 
       
