@@ -11,6 +11,11 @@ jobs:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:latest
     steps:
+      - run:
+          name: git
+          command: |
+            apt-get update && apt-get install -y git ssh
+
       - checkout
       
       - run:
@@ -42,7 +47,7 @@ jobs:
           command: | 
             pwd
             ls ./MyApi
-            
+
       - run:
           name: Build and test
           command: |
