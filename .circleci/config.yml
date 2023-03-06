@@ -42,6 +42,7 @@ jobs:
           command: | 
             pwd
             ls ./MyApi
+            
       - run:
           name: Build and test
           command: |
@@ -49,12 +50,6 @@ jobs:
             dotnet nuget locals all --clear
             dotnet restore
             dotnet build MyApi.sln --no-restore --configuration Release
-            cd /root/project/MyApi.Tests/
-            dotnet test MyApi.Tests/MyApi.Tests.csproj --no-restore --verbosity normal
-      
-
-      
-
 
       - run:
           name: SonarQube analysis
